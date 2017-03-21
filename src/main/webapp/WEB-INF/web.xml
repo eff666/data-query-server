@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+    <display-name>Query Server</display-name>
+    <servlet>
+        <servlet-name>Jersey2 Akka REST Servlet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.shuyun.query.jersey.context.ApplicationContext
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Jersey2 Akka REST Servlet</servlet-name>
+        <url-pattern>/shuyun-searchapi/1.0/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FileDownServlet</servlet-name>
+        <servlet-class>com.shuyun.query.jersey.context.FileUploadService</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FileDownServlet</servlet-name>
+        <url-pattern>/shuyun-searchapi/1.0/file</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OpsPing</servlet-name>
+        <servlet-class>com.shuyun.query.jersey.context.OpsService</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OpsPing</servlet-name>
+        <url-pattern>/ops/ping</url-pattern>
+    </servlet-mapping>
+
+</web-app>
