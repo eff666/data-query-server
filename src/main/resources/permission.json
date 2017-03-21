@@ -1,0 +1,14 @@
+{
+  "needCoder" : ["shuyun_id", "mobile_number", "email", "phone_number", "aid", "imei", "ali_no", "buyer_name", "buyer_nick"],
+  "coderKey" : "shuyun123",
+  "userId" : ["test"],
+  "userService" : ["buyer_name"],
+  "memberId" : ["huayuan","shuzun"],
+  "memberService" : ["shuyun_id", "mobile_number", "email", "phone_number", "aid", "imei", "ali_no", "buyer_name", "buyer_nick"],
+  "adminId" : ["shuyun"],
+  "adminService" : ["shuyun_id", "mobile_number", "email", "phone_number", "aid", "imei", "ali_no", "buyer_name", "buyer_nick"],
+  "insignificantQueryColumn" : ["buyer_name", "buyer_nick"],
+  "addressValidate" : ["reciev_validate_l","reciev_validate_c", "reciev_validate_h"],
+  "addressContext" : ["shuzun"],
+  "addressGeoKey" : "dcfc2a8babaf1c8fb0c42111d098606e"
+}

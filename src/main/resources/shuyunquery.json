@@ -1,0 +1,11 @@
+{
+  "elasticSearchUrl" : "es2.intraweb.shuyun.com",
+  "port" : 9400,
+  "clusterName" : "elasticsearch-cluster",
+  "index" : "shuyun_id_tag",
+  "type" : "shuyun_id",
+  "from" : 0,
+  "size" : 200,
+  "addressIndex" : "index_address",
+  "addressType" : "address"
+}
