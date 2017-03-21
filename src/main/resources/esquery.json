@@ -1,0 +1,162 @@
+{
+  "elasticSearchUrl": [
+    "es2.intraweb.shuyun.com"
+  ],
+  "port": 9400,
+  "clusterName": "elasticsearch-cluster",
+  "tradeFeature" : "trade_features",
+  "moveElasticSearchUrl" : "es1.intraweb.shuyun.com",
+  "needMoveIndex" : ["trade", "order", "customer", "customer_account"],
+  "needCryptIndex" : ["rfm", "customer", "member", "shipping", "order" ,"trade", "traderate", "customer_account"],
+  "needCryptPhone" : ["mobile_number","mobile", "receiver_mobile"],
+  "needCryptNick" : ["buyer_nick", "customerno", "nick"],
+  "needCryptName" : ["receiver_name", "full_name", "email", "address"],
+  "dataSources": {
+    "item_onsale": {
+      "index": "index_item_onsale",
+      "table": "item_onsale",
+      "routing": "shop_id",
+      "limit": 200,
+      "needSource": [
+        "skus.outer_id", "skus.properties_name", "skus.price", "skus.sku_id", "promotions.promotion_in_item.item_promo_price"
+      ],
+      "numericalDimensions":["is_fenxiao","skus.sku_id"],
+      "decimalDimensions":["price","skus.price","promotions.promotion_in_item.item_promo_price"],
+      "date":["delist_time","list_time","modified"],
+      "stringDimensions":["approve_status","cid","cid_name","detail_url","identified_tag","input_pids","input_str","num_iid","outer_id","pic_url","title","shop_id","seller_cids","seller_cid_names","props_name","props","skus.properties_name","skus.outer_idcreated"],
+      "needCrypt" : []
+    },
+    "member": {
+      "index": "index_member_new",
+      "table": "member",
+      "routing": "dp_id",
+      "limit": 200,
+      "needSource": [
+
+      ],
+      "numericalDimensions":["buyer_id","item_num","item_close_count","relation_source","close_trade_count","biz_order_id","flag","grade","trade_count"],
+      "decimalDimensions":["close_trade_amount","trade_amount","avg_price"],
+      "date":["etl_time"],
+      "stringDimensions":["dp_id","status","group_ids","last_trade_time","city","id","buyer_nick","province"],
+      "needCrypt" : ["buyer_nick"]
+    },
+    "customer": {
+      "index": "index_customer_new",
+      "table": "customer",
+      "routing": "aaa",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : [ "full_name", "customerno", "mobile", "email", "address"]
+    },
+    "rfm": {
+      "index": "index_rfm_new",
+      "table": "rfm",
+      "routing": "dp_id",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["buyer_nick"]
+    },
+    "trade": {
+      "index": "index_trade_encrypt",
+      "table": "trade",
+      "routing": "aaa",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["buyer_nick","receiver_name", "receiver_mobile"]
+    },
+    "order": {
+      "index": "index_order_new",
+      "table": "order",
+      "routing": "aaa",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["buyer_nick"]
+    },
+    "trade_features": {
+      "index": "shuzhun_trade_features",
+      "table": "trade_features",
+      "routing": "aaa",
+      "limit": 1,
+      "needSource": [
+        "buyer_nick", "mobile"
+      ],
+      "numericalDimensions":["aaa"],
+      "decimalDimensions":["aaa"],
+      "date":["aaa"],
+      "stringDimensions":["sum_buyer_obtain_point_fee_y1","count_created_y1","sum_payment_y1","sum_buyer_obtain_point_fee_m6","count_created_m6","sum_payment_m6","sum_buyer_obtain_point_fee_m3","count_created_m3","sum_payment_m3","last_trade_dt"],
+      "needCrypt" : ["buyer_nick", "mobile"]
+    },
+    "shipping_flow": {
+      "index": "index_shipping_flow",
+      "table": "shipping_flow",
+      "routing": "dp_id",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["receiver_mobile", "receiver_name", "buyer_nick"]
+    },
+    "shipping": {
+      "index": "index_shipping_new",
+      "table": "shipping",
+      "routing": "aaa",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["buyer_nick", "receiver_mobile", "receiver_name"]
+    },
+    "traderate": {
+      "index": "index_traderate",
+      "table": "traderate",
+      "routing": "aaa",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["nick"]
+    },
+    "customer_account": {
+      "index": "index_customer_account",
+      "table": "customer_account",
+      "routing": "aaa",
+      "limit": 200,
+      "needSource": [
+      ],
+      "numericalDimensions":["aa"],
+      "decimalDimensions":["bb"],
+      "date":["cc"],
+      "stringDimensions":["dd"],
+      "needCrypt" : ["buyer_nick", "mobile", "full_name", "email"]
+    }
+  }
+}
